@@ -1,0 +1,113 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Alfred.Stangl\\Downloads\\SAMLv20.Core-evaluation\\SAML for .NET Core\\Examples\\NET-Core-3.1\\SSO\\ExampleServiceProvider\\ExampleServiceProvider.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Alfred.Stangl\\Downloads\\SAMLv20.Core-evaluation\\SAML for .NET Core\\Examples\\NET-Core-3.1\\SSO\\ExampleServiceProvider\\ExampleServiceProvider.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Alfred.Stangl\\Downloads\\SAMLv20.Core-evaluation\\SAML for .NET Core\\Examples\\NET-Core-3.1\\SSO\\ExampleServiceProvider\\ExampleServiceProvider.csproj",
+        "projectName": "ExampleServiceProvider",
+        "projectPath": "C:\\Users\\Alfred.Stangl\\Downloads\\SAMLv20.Core-evaluation\\SAML for .NET Core\\Examples\\NET-Core-3.1\\SSO\\ExampleServiceProvider\\ExampleServiceProvider.csproj",
+        "packagesPath": "C:\\Users\\Alfred.Stangl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Alfred.Stangl\\Downloads\\SAMLv20.Core-evaluation\\SAML for .NET Core\\Examples\\NET-Core-3.1\\SSO\\ExampleServiceProvider\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Alfred.Stangl\\Downloads\\SAMLv20.Core-evaluation\\SAML for .NET Core\\Examples\\NuGet.Config",
+          "C:\\Users\\Alfred.Stangl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\Alfred.Stangl\\Downloads\\SAMLv20.Core-evaluation\\SAML for .NET Core\\Bin": {},
+          "C:\\Users\\Alfred.Stangl\\packages\\": {},
+          "C:\\Users\\Alfred.Stangl\\repos\\crisp\\CRISP-GRPC\\src\\CRISP.Grpc.ClinicalRelationships\\bin\\Release\\netcoreapp3.1\\publish\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "ComponentSpace.Saml2": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
+            "Serilog.Sinks.Async": {
+              "target": "Package",
+              "version": "[1.4.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+﻿@page
+@attribute [IgnoreAntiforgeryToken]
+
+@using Microsoft.AspNetCore.Identity
+@using ComponentSpace.Saml2
+@using Microsoft.Extensions.Logging;
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject ISamlIdentityProvider SamlIdentityProvider
+@inject ILogger<Index> Logger
+
+@functions {
+    public async Task<IActionResult> OnPost(string returnUrl = null)
+    {
+        if (SignInManager.IsSignedIn(User))
+        {
+            await SignInManager.SignOutAsync();
+        }
+
+        Logger.LogInformation("User logged out.");
+
+        var ssoState = await SamlIdentityProvider.GetStatusAsync();
+
+        if (await ssoState.CanSloAsync())
+        {
+            // Initiate SAML logout.
+            return RedirectToAction("InitiateSingleLogout", "Saml");
+        }
+
+        if (returnUrl != null)
+        {
+            return LocalRedirect(returnUrl);
+        }
+        else
+        {
+            return Redirect("~/");
+        }
+    }
+}

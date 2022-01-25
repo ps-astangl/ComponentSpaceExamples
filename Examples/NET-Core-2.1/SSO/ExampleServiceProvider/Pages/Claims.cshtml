@@ -1,0 +1,68 @@
+﻿@page
+@model ExampleServiceProvider.Pages.ClaimsModel
+@{
+    ViewData["Title"] = "Claims";
+}
+
+<h2>Claims</h2>
+
+<p>This page demonstrates calling a web API that requires authorization through a JWT bearer token.</p>
+
+<table class="table" id="ClaimsTable">
+    <tr>
+        <th>User Claim</th>
+        <th>Value</th>
+    </tr>
+</table>
+
+@section Scripts {
+    <script type="text/javascript">
+        function getJWT() {
+            return $.ajax({
+                type: "GET",
+                url: "/api/Token",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            });
+        }
+
+        function getClaims(jwt) {
+            return $.ajax({
+                type: "GET",
+                url: "/api/Claims",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", 'Bearer ' + jwt);
+                }
+            });
+        }
+
+        function displayClaims(claims) {
+            $.each(claims, function (i, claim) {
+                var row = "<tr>" +
+                    "<td>" + claim.type + "</td>" +
+                    "<td>" + claim.value + "</td>" +
+                    "</tr>";
+                $('#ClaimsTable').append(row);
+            });
+        }
+
+        function displayError() {
+            $('#ClaimsTable').append("<tr><td>An error occurred retrieving the user claims.</td></tr>");
+        }
+
+        $(document).ready(function () {
+            $.when(getJWT())
+                .then(function (data) {
+                    return getClaims(data.token);
+                })
+                .then(function (data) {
+                    displayClaims(data);
+                })
+                .fail(function () {
+                    displayError();
+                });
+        });
+    </script>
+}

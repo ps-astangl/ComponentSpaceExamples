@@ -1,0 +1,277 @@
+2022-01-24 10:50:06.399 -05:00 [FTL] Unable to start Kestrel.
+System.IO.IOException: Failed to bind to address https://127.0.0.1:5001: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+ ---> System.Net.Sockets.SocketException (10048): Only one usage of each socket address (protocol/network address/port) is normally permitted.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer.<>c__DisplayClass21_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(IServerAddressesFeature addresses, KestrelServerOptions serverOptions, ILogger logger, Func`2 createBinding)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+2022-01-24 10:51:51.567 -05:00 [INF] ComponentSpace.Saml2, Version=4.0.0.0, Culture=neutral, PublicKeyToken=16647a1283418145, .NET Standard 2.1 build, Evaluation.
+2022-01-24 10:51:51.576 -05:00 [INF] CLR: .NET Core 3.1.22, OS: Microsoft Windows 10.0.22000, Culture: English (United States)
+2022-01-24 10:51:51.577 -05:00 [DBG] Configuration resolver: ComponentSpace.Saml2.Configuration.Resolver.SamlConfigurationResolver
+2022-01-24 10:51:51.577 -05:00 [DBG] Certificate manager: ComponentSpace.Saml2.Certificates.CertificateManager
+2022-01-24 10:51:51.577 -05:00 [DBG] Certificate loader: ComponentSpace.Saml2.Certificates.CachedCertificateLoader
+2022-01-24 10:51:51.577 -05:00 [DBG] ID cache: ComponentSpace.Saml2.Cache.DistributedIDCache
+2022-01-24 10:51:51.577 -05:00 [DBG] Artifact cache: ComponentSpace.Saml2.Cache.DistributedArtifactCache
+2022-01-24 10:51:51.577 -05:00 [DBG] SSO session store: ComponentSpace.Saml2.Session.DistributedSsoSessionStore
+2022-01-24 10:51:51.730 -05:00 [DBG] SAML configuration:
+{
+  "Configurations": [
+    {
+      "LocalServiceProviderConfiguration": {
+        "ArtifactResolutionServiceUrl": "https://localhost:44360/SAML/ArtifactResolutionService",
+        "AssertionConsumerServiceUrl": "https://localhost:44360/SAML/AssertionConsumerService",
+        "Description": "Example Service Provider",
+        "LocalCertificates": [
+          {
+            "FileName": "certificates/sp.pfx",
+            "Password": "********"
+          }
+        ],
+        "Name": "https://ExampleServiceProvider",
+        "SingleLogoutServiceUrl": "https://localhost:44360/SAML/SingleLogoutService"
+      },
+      "PartnerIdentityProviderConfigurations": [
+        {
+          "ArtifactResolutionServiceUrl": "https://localhost:44313/SAML/ArtifactResolutionService",
+          "Description": "Example Identity Provider",
+          "Name": "https://ExampleIdentityProvider",
+          "PartnerCertificates": [
+            {
+              "FileName": "certificates/idp.cer"
+            }
+          ],
+          "SignAuthnRequest": true,
+          "SignLogoutRequest": true,
+          "SignLogoutResponse": true,
+          "SingleLogoutServiceUrl": "https://localhost:44313/SAML/SingleLogoutService",
+          "SingleSignOnServiceUrl": "https://localhost:44313/SAML/SingleSignOnService",
+          "WantLogoutRequestSigned": true,
+          "WantLogoutResponseSigned": true
+        },
+        {
+          "ArtifactResolutionServiceUrl": "https://localhost:44377/SAML/ArtifactResolutionService",
+          "Description": "Middleware Identity Provider",
+          "Name": "https://MiddlewareIdentityProvider",
+          "PartnerCertificates": [
+            {
+              "FileName": "certificates/idp.cer"
+            }
+          ],
+          "SignAuthnRequest": true,
+          "SignLogoutRequest": true,
+          "SignLogoutResponse": true,
+          "SingleLogoutServiceUrl": "https://localhost:44377/SAML/SingleLogoutService",
+          "SingleSignOnServiceUrl": "https://localhost:44377/SAML/SingleSignOnService",
+          "WantLogoutRequestSigned": true,
+          "WantLogoutResponseSigned": true
+        },
+        {
+          "ArtifactResolutionServiceUrl": "https://localhost:44361/SAML/IDP/ArtifactResolutionService",
+          "Description": "SAML Proxy",
+          "Name": "https://SamlProxy",
+          "PartnerCertificates": [
+            {
+              "FileName": "certificates/proxy.cer"
+            }
+          ],
+          "SignAuthnRequest": true,
+          "SignLogoutRequest": true,
+          "SignLogoutResponse": true,
+          "SingleLogoutServiceUrl": "https://localhost:44361/SAML/IDP/SingleLogoutService",
+          "SingleSignOnServiceUrl": "https://localhost:44361/SAML/IDP/SingleSignOnService",
+          "WantLogoutRequestSigned": true,
+          "WantLogoutResponseSigned": true
+        },
+        {
+          "ArtifactResolutionServiceUrl": "https://adfs.componentspace.com/adfs/services/trust/artifactresolution",
+          "Description": "ADFS",
+          "Name": "http://adfs.componentspace.com/adfs/services/trust",
+          "PartnerCertificates": [
+            {
+              "FileName": "certificates/adfs.cer"
+            }
+          ],
+          "SignAuthnRequest": true,
+          "SignLogoutRequest": true,
+          "SignLogoutResponse": true,
+          "SingleLogoutServiceUrl": "https://adfs.componentspace.com/adfs/ls/",
+          "SingleSignOnServiceUrl": "https://adfs.componentspace.com/adfs/ls/",
+          "WantLogoutRequestSigned": true,
+          "WantLogoutResponseSigned": true
+        },
+        {
+          "Description": "Azure AD",
+          "Name": "https://sts.windows.net/f2f933ec-d7c9-433f-8926-d3a0732a7dcf/",
+          "PartnerCertificates": [
+            {
+              "FileName": "certificates/azure.cer"
+            }
+          ],
+          "SignLogoutRequest": true,
+          "SignLogoutResponse": true,
+          "SingleLogoutServiceUrl": "https://login.microsoftonline.com/f2f933ec-d7c9-433f-8926-d3a0732a7dcf/saml2",
+          "SingleSignOnServiceUrl": "https://login.microsoftonline.com/f2f933ec-d7c9-433f-8926-d3a0732a7dcf/saml2"
+        },
+        {
+          "Description": "Google",
+          "Name": "https://accounts.google.com/o/saml2?idpid=C03kl4l11",
+          "PartnerCertificates": [
+            {
+              "FileName": "certificates/google.cer"
+            }
+          ],
+          "SingleSignOnServiceUrl": "https://accounts.google.com/o/saml2/idp?idpid=C03kl4l11"
+        },
+        {
+          "Description": "Salesforce",
+          "Name": "https://componentspace-dev-ed.my.salesforce.com",
+          "PartnerCertificates": [
+            {
+              "FileName": "certificates/salesforce.cer"
+            }
+          ],
+          "SignAuthnRequest": true,
+          "SignLogoutRequest": true,
+          "SignLogoutResponse": true,
+          "SingleLogoutServiceUrl": "https://componentspace-dev-ed.my.salesforce.com/services/auth/idp/saml2/logout",
+          "SingleSignOnServiceUrl": "https://componentspace-dev-ed.my.salesforce.com/idp/endpoint/HttpRedirect"
+        },
+        {
+          "Description": "Okta",
+          "Name": "http://www.okta.com/exky5euw54Xm4gyj30h7",
+          "PartnerCertificates": [
+            {
+              "FileName": "certificates/okta.cer"
+            }
+          ],
+          "SignAuthnRequest": true,
+          "SignLogoutRequest": true,
+          "SignLogoutResponse": true,
+          "SingleLogoutServiceUrl": "https://componentspace.oktapreview.com/app/componentspace_exampleserviceprovider_1/exky5euw54Xm4gyj30h7/slo/saml",
+          "SingleSignOnServiceUrl": "https://componentspace.oktapreview.com/app/componentspace_exampleserviceprovider_1/exky5euw54Xm4gyj30h7/sso/saml"
+        },
+        {
+          "Description": "OneLogin",
+          "Name": "https://app.onelogin.com/saml/metadata/715551",
+          "PartnerCertificates": [
+            {
+              "FileName": "certificates/onelogin.cer"
+            }
+          ],
+          "SingleLogoutServiceUrl": "https://componentspacetest-dev.onelogin.com/trust/saml2/http-redirect/slo/715551",
+          "SingleSignOnServiceUrl": "https://componentspacetest-dev.onelogin.com/trust/saml2/http-post/sso/715551"
+        },
+        {
+          "Description": "PingOne",
+          "Name": "https://pingone.com/idp/componentspace",
+          "PartnerCertificates": [
+            {
+              "FileName": "certificates/pingone.cer"
+            }
+          ],
+          "SingleLogoutServiceUrl": "https://sso.connect.pingidentity.com/sso/SLO.saml2",
+          "SingleSignOnServiceUrl": "https://sso.connect.pingidentity.com/sso/idp/SSO.saml2?idpid=7f3aaa28-259c-4b1b-805d-cd268089403c"
+        },
+        {
+          "Description": "Centrify",
+          "Name": "https://aau0294.my.centrify.com/21321d36-0d21-4d21-8bd1-151c08e7848d",
+          "PartnerCertificates": [
+            {
+              "FileName": "certificates/centrify.cer"
+            }
+          ],
+          "SingleSignOnServiceUrl": "https://aau0294.my.centrify.com/applogin/appKey/21321d36-0d21-4d21-8bd1-151c08e7848d/customerId/AAU0294"
+        },
+        {
+          "Description": "Shibboleth",
+          "MappingRules": [
+            {
+              "Rule": "Rename",
+              "Value": "mail"
+            }
+          ],
+          "Name": "https://samltest.id/saml/idp",
+          "PartnerCertificates": [
+            {
+              "FileName": "certificates/shibboleth1.cer"
+            },
+            {
+              "FileName": "certificates/shibboleth2.cer"
+            }
+          ],
+          "SignLogoutRequest": true,
+          "SignLogoutResponse": true,
+          "SingleLogoutServiceUrl": "https://samltest.id/idp/profile/SAML2/Redirect/SLO",
+          "SingleSignOnServiceUrl": "https://samltest.id/idp/profile/SAML2/Redirect/SSO"
+        },
+        {
+          "Description": "IdentityServer4",
+          "Name": "https://IdentityServer4",
+          "PartnerCertificates": [
+            {
+              "FileName": "certificates/idp.cer"
+            }
+          ],
+          "SignAuthnRequest": true,
+          "SingleLogoutServiceUrl": "http://localhost:5000/SAML/SingleLogoutService",
+          "SingleSignOnServiceUrl": "http://localhost:5000/SAML/SingleSignOnService"
+        }
+      ]
+    }
+  ]
+}
+2022-01-24 10:51:51.730 -05:00 [DBG] The SAML SSO environment has been successfully initialized.
+2022-01-24 10:51:51.741 -05:00 [DBG] Initiating SSO to the partner identity provider https://ExampleIdentityProvider.
+2022-01-24 10:51:51.748 -05:00 [DBG] The SSO session ID 854e039c-9d17-4a27-880a-1fdd9e1318f9 has been saved to the saml-session cookie.
+2022-01-24 10:51:51.749 -05:00 [DBG] HTTP cookie: saml-session=854e039c-9d17-4a27-880a-1fdd9e1318f9; Path=/; SameSite=None; Secure; HttpOnly
+2022-01-24 10:51:51.750 -05:00 [DBG] SSO session state is being initialized.
+2022-01-24 10:51:51.751 -05:00 [DBG] SSO session state for saml-session-854e039c-9d17-4a27-880a-1fdd9e1318f9-SamlState is being saved to the distributed cache.
+2022-01-24 10:51:51.758 -05:00 [DBG] SAML session state (854e039c-9d17-4a27-880a-1fdd9e1318f9):
+SP state:
+
+2022-01-24 10:51:51.762 -05:00 [DBG] Constructing an authn request.
+2022-01-24 10:51:51.776 -05:00 [DBG] Authn request: <samlp:AuthnRequest ID="_e1841edc-caf8-4b20-a0c9-c6b5bbc301de" Version="2.0" IssueInstant="2022-01-24T15:51:51Z" Destination="https://localhost:44313/SAML/SingleSignOnService" ForceAuthn="false" IsPassive="false" ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" AssertionConsumerServiceURL="https://localhost:44360/SAML/AssertionConsumerService" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"><saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">https://ExampleServiceProvider</saml:Issuer><samlp:NameIDPolicy AllowCreate="true" /></samlp:AuthnRequest>
+2022-01-24 10:51:51.777 -05:00 [DBG] SSO session state for saml-session-854e039c-9d17-4a27-880a-1fdd9e1318f9-SamlState is being saved to the distributed cache.
+2022-01-24 10:51:51.786 -05:00 [DBG] Sending the SAML authn request.
+2022-01-24 10:51:51.793 -05:00 [DBG] Loading the X.509 certificate from the file C:\Users\Alfred.Stangl\Downloads\SAMLv20.Core-evaluation\SAML for .NET Core\Examples\NET-Core-3.1\SSO\ExampleServiceProvider\certificates/sp.pfx.
+2022-01-24 10:51:51.822 -05:00 [DBG] The X.509 certificate with subject name CN=www.sp.com, serial number 0867A17DC9EFEABE4CCBF7E7ADB7C37A and thumbprint 427A3D5B39DF593B1D44B769D3697AEDF00FD83F has been loaded.
+2022-01-24 10:51:51.823 -05:00 [DBG] The X.509 certificate with subject name CN=www.sp.com, serial number 0867A17DC9EFEABE4CCBF7E7ADB7C37A and thumbprint 427A3D5B39DF593B1D44B769D3697AEDF00FD83F is being validated.
+2022-01-24 10:51:51.824 -05:00 [DBG] The certificate has been validated and expires on 12/31/2049 9:00:00 AM.
+2022-01-24 10:51:51.837 -05:00 [DBG] The X.509 certificate with subject name CN=www.sp.com, serial number 0867A17DC9EFEABE4CCBF7E7ADB7C37A and thumbprint 427A3D5B39DF593B1D44B769D3697AEDF00FD83F has been cached.
+2022-01-24 10:51:51.842 -05:00 [DBG] Sending a SAML message over HTTP-Redirect.
+2022-01-24 10:51:51.842 -05:00 [DBG] Creating an HTTP-Redirect URL.
+2022-01-24 10:51:51.843 -05:00 [DBG] SAML request: <samlp:AuthnRequest ID="_e1841edc-caf8-4b20-a0c9-c6b5bbc301de" Version="2.0" IssueInstant="2022-01-24T15:51:51Z" Destination="https://localhost:44313/SAML/SingleSignOnService" ForceAuthn="false" IsPassive="false" ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" AssertionConsumerServiceURL="https://localhost:44360/SAML/AssertionConsumerService" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"><saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">https://ExampleServiceProvider</saml:Issuer><samlp:NameIDPolicy AllowCreate="true" /></samlp:AuthnRequest>
+2022-01-24 10:51:51.843 -05:00 [DBG] Relay State: 
+2022-01-24 10:51:51.845 -05:00 [DBG] Encoding SAML message: <samlp:AuthnRequest ID="_e1841edc-caf8-4b20-a0c9-c6b5bbc301de" Version="2.0" IssueInstant="2022-01-24T15:51:51Z" Destination="https://localhost:44313/SAML/SingleSignOnService" ForceAuthn="false" IsPassive="false" ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" AssertionConsumerServiceURL="https://localhost:44360/SAML/AssertionConsumerService" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"><saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">https://ExampleServiceProvider</saml:Issuer><samlp:NameIDPolicy AllowCreate="true" /></samlp:AuthnRequest>
+2022-01-24 10:51:51.850 -05:00 [DBG] Encoded SAML message: fZJfT8IwFMW/ytL3uT8Mgg0smaBxCerC0AdfTNddoEnXzt4O8dtbGBp8gKRPN/ec87snnSBrZEuzzm7VEj47QOvl8yn5gGicRFBzn7P12E+qOPRZyG99PqqGVcUHYVQD8d7AoNBqSuKbkHg5Yge5QsuUdaMwjv0w8uNkFQ3pMHLvnXhzlyAUs0fV1toWaRBIzZncarQ0SQbRICizp0VQCrWRUIqNelElmJ3gLvBBGw5H2ilZM4lulGPBEMUO/iaF0VZzLe+Eqp3JlHRGUc1QIFWsAaSW00MEddS06peQPq5WhV+8lCviZYhgDogzrbBrwJzyX5eLC9CjsIe+pCTevpEK6bHu60DtiZ6kk8M2PbZqzvTX5a6LnoCkv6T3e9a0rsoexbWzEzWYSXBm32e19Nn55fNCS8G/vUxK/TUzwKzr1prOXRGkvez/l0l/AA==
+2022-01-24 10:51:51.853 -05:00 [DBG] Signing data: 53 41 4d 4c 52 65 71 75 65 73 74 3d 66 5a 4a 66 54 38 49 77 46 4d 57 25 32 46 79 74 4c 33 75 54 38 4d 67 67 30 73 6d 61 42 78 43 65 72 43 30 41 64 66 54 4e 64 64 6f 45 6e 58 7a 74 34 4f 38 64 74 62 47 42 70 38 67 4b 52 50 4e 25 32 46 65 63 38 37 73 6e 6e 53 42 72 5a 45 75 7a 7a 6d 37 56 45 6a 34 37 51 4f 76 6c 38 79 6e 35 67 47 69 63 52 46 42 7a 6e 37 50 31 32 45 25 32 42 71 4f 50 52 5a 79 47 39 39 50 71 71 47 56 63 55 48 59 56 51 44 38 64 37 41 6f 4e 42 71 53 75 4b 62 6b 48 67 35 59 67 65 35 51 73 75 55 64 61 4d 77 6a 76 30 77 38 75 4e 6b 46 51 33 70 4d 48 4c 76 6e 58 68 7a 6c 79 41 55 73 30 66 56 31 74 6f 57 61 52 42 49 7a 5a 6e 63 61 72 51 30 53 51 62 52 49 43 69 7a 70 30 56 51 43 72 57 52 55 49 71 4e 65 6c 45 6c 6d 4a 33 67 4c 76 42 42 47 77 35 48 32 69 6c 5a 4d 34 6c 75 6c 47 50 42 45 4d 55 4f 25 32 46 69 61 46 30 56 5a 7a 4c 65 25 32 42 45 71 70 33 4a 6c 48 52 47 55 63 31 51 49 46 57 73 41 61 53 57 30 30 4d 45 64 64 53 30 36 70 65 51 50 71 35 57 68 56 25 32 42 38 6c 43 76 69 5a 59 68 67 44 6f 67 7a 72 62 42 72 77 4a 7a 79 58 35 65 4c 43 39 43 6a 73 49 65 25 32 42 70 43 54 65 76 70 45 4b 36 62 48 75 36 30 44 74 69 5a 36 6b 6b 38 4d 32 50 62 5a 71 7a 76 54 58 35 61 36 4c 6e 6f 43 6b 76 36 54 33 65 39 61 30 72 73 6f 65 78 62 57 7a 45 7a 57 59 53 58 42 6d 33 32 65 31 39 4e 6e 35 35 66 4e 43 53 38 47 25 32 46 76 55 78 4b 25 32 46 54 55 7a 77 4b 7a 72 31 70 72 4f 58 52 47 6b 76 65 7a 25 32 46 6c 30 6c 25 32 46 41 41 25 33 44 25 33 44 26 53 69 67 41 6c 67 3d 68 74 74 70 25 33 41 25 32 46 25 32 46 77 77 77 2e 77 33 2e 6f 72 67 25 32 46 32 30 30 31 25 32 46 30 34 25 32 46 78 6d 6c 64 73 69 67 2d 6d 6f 72 65 25 32 33 72 73 61 2d 73 68 61 32 35 36
+2022-01-24 10:51:51.853 -05:00 [DBG] Signature algorithm: http://www.w3.org/2001/04/xmldsig-more#rsa-sha256.
+2022-01-24 10:51:51.863 -05:00 [DBG] Signature: 2b f9 06 a2 b4 5c 26 6e ab 55 a5 2c d8 29 92 18 61 13 31 03 6f 70 e8 52 5b 8b a7 fa b0 df c1 67 a6 3e 27 ab 76 b6 50 ee 7a 90 0e c8 cd 69 00 b1 f6 41 30 84 61 14 e2 9c d5 f2 8b bf 74 c7 5d d2 62 3a 48 93 48 c9 ff 89 b1 63 22 8e b0 0c e7 52 d9 c5 4b 21 3a a0 96 2e 9e 6f c1 0c ea d2 b8 41 83 72 b7 69 49 ee 6f 0e 0f e2 58 01 4a ae 51 2f 44 60 e8 ac 40 dd 03 08 9e 95 9f ee dc 17 99 cf 46 88 53 c6 e1 05 b7 4a fb 09 89 cf 08 97 fa ac 77 cb 99 33 4e 13 f2 d0 d3 0a c9 ea 7b bc 4b f9 fb b6 b3 5d f7 5f 75 66 92 f6 b9 92 8e fd 34 9a 52 7a 93 a9 77 05 e8 ab 19 a7 e9 06 3b cf c3 12 57 6c de ed 70 bd 0c 02 bd 99 93 d1 9a 7a ef 7e 29 e9 74 88 1f 26 b5 59 f4 a3 a5 d0 26 0a c8 d5 a8 ca 4a f1 81 3f 73 85 97 e8 96 2b 35 bd f7 c5 18 f2 2e cd 59 04 db 53 6d b7 6d 57 82 72 6d 77
+2022-01-24 10:51:51.863 -05:00 [DBG] HTTP Redirect URL: https://localhost:44313/SAML/SingleSignOnService?SAMLRequest=fZJfT8IwFMW%2FytL3uT8Mgg0smaBxCerC0AdfTNddoEnXzt4O8dtbGBp8gKRPN%2Fec87snnSBrZEuzzm7VEj47QOvl8yn5gGicRFBzn7P12E%2BqOPRZyG99PqqGVcUHYVQD8d7AoNBqSuKbkHg5Yge5QsuUdaMwjv0w8uNkFQ3pMHLvnXhzlyAUs0fV1toWaRBIzZncarQ0SQbRICizp0VQCrWRUIqNelElmJ3gLvBBGw5H2ilZM4lulGPBEMUO%2FiaF0VZzLe%2BEqp3JlHRGUc1QIFWsAaSW00MEddS06peQPq5WhV%2B8lCviZYhgDogzrbBrwJzyX5eLC9CjsIe%2BpCTevpEK6bHu60DtiZ6kk8M2PbZqzvTX5a6LnoCkv6T3e9a0rsoexbWzEzWYSXBm32e19Nn55fNCS8G%2FvUxK%2FTUzwKzr1prOXRGkvez%2Fl0l%2FAA%3D%3D&SigAlg=http%3A%2F%2Fwww.w3.org%2F2001%2F04%2Fxmldsig-more%23rsa-sha256&Signature=K%2FkGorRcJm6rVaUs2CmSGGETMQNvcOhSW4un%2BrDfwWemPierdrZQ7nqQDsjNaQCx9kEwhGEU4pzV8ou%2FdMdd0mI6SJNIyf%2BJsWMijrAM51LZxUshOqCWLp5vwQzq0rhBg3K3aUnubw4P4lgBSq5RL0Rg6KxA3QMInpWf7twXmc9GiFPG4QW3SvsJic8Il%2Fqsd8uZM04T8tDTCsnqe7xL%2Bfu2s133X3Vmkva5ko79NJpSepOpdwXoqxmn6QY7z8MSV2ze7XC9DAK9mZPRmnrvfinpdIgfJrVZ9KOl0CYKyNWoykrxgT9zhZfolis1vffFGPIuzVkE21Ntt21XgnJtdw%3D%3D
+2022-01-24 10:51:51.863 -05:00 [DBG] Redirecting to: https://localhost:44313/SAML/SingleSignOnService?SAMLRequest=fZJfT8IwFMW%2FytL3uT8Mgg0smaBxCerC0AdfTNddoEnXzt4O8dtbGBp8gKRPN%2Fec87snnSBrZEuzzm7VEj47QOvl8yn5gGicRFBzn7P12E%2BqOPRZyG99PqqGVcUHYVQD8d7AoNBqSuKbkHg5Yge5QsuUdaMwjv0w8uNkFQ3pMHLvnXhzlyAUs0fV1toWaRBIzZncarQ0SQbRICizp0VQCrWRUIqNelElmJ3gLvBBGw5H2ilZM4lulGPBEMUO%2FiaF0VZzLe%2BEqp3JlHRGUc1QIFWsAaSW00MEddS06peQPq5WhV%2B8lCviZYhgDogzrbBrwJzyX5eLC9CjsIe%2BpCTevpEK6bHu60DtiZ6kk8M2PbZqzvTX5a6LnoCkv6T3e9a0rsoexbWzEzWYSXBm32e19Nn55fNCS8G%2FvUxK%2FTUzwKzr1prOXRGkvez%2Fl0l%2FAA%3D%3D&SigAlg=http%3A%2F%2Fwww.w3.org%2F2001%2F04%2Fxmldsig-more%23rsa-sha256&Signature=K%2FkGorRcJm6rVaUs2CmSGGETMQNvcOhSW4un%2BrDfwWemPierdrZQ7nqQDsjNaQCx9kEwhGEU4pzV8ou%2FdMdd0mI6SJNIyf%2BJsWMijrAM51LZxUshOqCWLp5vwQzq0rhBg3K3aUnubw4P4lgBSq5RL0Rg6KxA3QMInpWf7twXmc9GiFPG4QW3SvsJic8Il%2Fqsd8uZM04T8tDTCsnqe7xL%2Bfu2s133X3Vmkva5ko79NJpSepOpdwXoqxmn6QY7z8MSV2ze7XC9DAK9mZPRmnrvfinpdIgfJrVZ9KOl0CYKyNWoykrxgT9zhZfolis1vffFGPIuzVkE21Ntt21XgnJtdw%3D%3D
+2022-01-24 10:51:51.863 -05:00 [DBG] The SAML message has been sent over HTTP-Redirect.
+2022-01-24 10:51:51.864 -05:00 [DBG] SAML session state (854e039c-9d17-4a27-880a-1fdd9e1318f9):
+SP state:
+Pending response state:
+Action: ReceiveSamlResponse
+Partner name: https://ExampleIdentityProvider
+Relay state: 
+In response to: _e1841edc-caf8-4b20-a0c9-c6b5bbc301de
+
+2022-01-24 10:51:51.864 -05:00 [DBG] Initiation of SSO to the partner identity provider https://ExampleIdentityProvider has completed successfully.

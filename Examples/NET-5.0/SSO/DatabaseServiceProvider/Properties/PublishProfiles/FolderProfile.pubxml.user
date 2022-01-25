@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\ComponentSpace\Products\SAMLv20.Core\Examples\NET-5.0\SSO\ExampleServiceProvider\bin\Release\net5.0\publish\</_PublishTargetUrl>
+    <History>True|2021-04-27T06:51:19.1716094Z;True|2021-04-27T15:58:09.8747740+10:00;True|2021-04-27T15:57:44.2712878+10:00;True|2021-04-27T14:31:37.6218643+10:00;True|2021-04-27T14:10:27.0786509+10:00;True|2021-04-27T14:05:00.1817714+10:00;True|2021-04-27T10:10:43.0873002+10:00;</History>
+  </PropertyGroup>
+</Project>
